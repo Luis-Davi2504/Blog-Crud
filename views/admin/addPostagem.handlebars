@@ -1,0 +1,54 @@
+{{#each erros}}
+    <div class="alert alert-danger">{{text}}</div>
+{{else}}
+    
+{{/each}}
+
+<div class="card">
+    <div class="card-body">
+        <form action="/admin/postagens/nova" method="POST">
+            
+            
+            <div class="input-group mb-3">
+                
+                
+                <span class="input-group-text" id="addon-wrapping">Titulo:</span>
+                <input type="text" name="titulo" class="form-control" required>
+               
+                <span class="input-group-text" id="addon-wrapping">Slug:</span>
+                <input type="text" name="slug" class="form-control" required>
+                
+                
+                
+            </div>
+            
+            <div class="input-group">
+                <span class="input-group-text" id="addon-wrapping">Descição: </span>
+                <input type="text" name="desc" class="form-control" required >
+                
+            </div>    
+            <br>    
+            <div class="input-group">
+                <span class="input-group-text" id="addon-wrapping">Categoria:</span>
+                <select name="category" class="form-select" required>
+                        <option selected value="0">Nenhuma categoria selecionada</option>
+                    {{#each categorias}}
+                        
+                        <option value="{{_id}}">{{nome}}</option>
+                    {{else}}
+                        <option value="0"> Nenhuma categoria existente</option>
+                    {{/each}}
+                </select>
+            </div>
+            <br>
+            <div class="input-group">
+                
+                <span class="input-group-text" id="addon-wrapping">Conteúdo: </span>
+                <textarea name="content" class="form-control" rows="7" required></textarea>
+            </div>
+            <br>
+            
+            <button type="submit" class="btn btn-success">Criar Postagem</button>
+        </form>
+    </div>
+</div>
